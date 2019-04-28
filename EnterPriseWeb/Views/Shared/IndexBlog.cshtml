@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿
+
+
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +16,7 @@
     <link href="~/Content/Site.css" rel="stylesheet" />
     <!-- Bootstrap core CSS -->
     <link href="~/layout/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
+
 
 
     <!-- Custom fonts for this template -->
@@ -38,7 +42,7 @@
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="~/scripts/jquery.shorten.js"></script>
-    
+
     <script language="javascript">
         $(document).ready(function () {
 
@@ -46,9 +50,9 @@
 
         });
     </script>
-    
 
-   
+
+
 </head>
 
 <body>
@@ -56,7 +60,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="index.html">GREENWICH MAGAZINE</a>
+            <a class="navbar-brand" href="@Url.Action("Guest","contents")">GREENWICH MAGAZINE</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -64,15 +68,17 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">IT</a>
+                        <a class="nav-link" href="@Url.Action("IndexFaculty","contents", new { id = "IT" })">IT</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Graphic Design</a>
+                        <a class="nav-link" href="@Url.Action("IndexFaculty","contents", new { id = "GD" })">Graphic Design</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="post.html">Bussiness</a>
+                        <a class="nav-link" href="@Url.Action("IndexFaculty","contents", new { id = "BA" })">Business</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Login","accounts")">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -87,10 +93,10 @@
                     <div class="post-heading">
                         <h1>New</h1>
                         @*<span class="meta">
-        Posted by
-        <a href="#">Start Bootstrap</a>
-        on August 24, 2019
-    </span>*@
+                                Posted by
+                                <a href="#">Start Bootstrap</a>
+                                on August 24, 2019
+                            </span>*@
                     </div>
                 </div>
             </div>
@@ -147,37 +153,7 @@
         </div>
     </footer>
 
-    
-    
-    <script>
-        $(function () {
-            $(".CreComment").click(function () {
-                debugger;
-                var $buttonClicked = $(this);
-                var id = $buttonClicked.attr('data-id');
-                var options = { "backdrop": "static", keyboard: true };
-                $.ajax({
-                    type: "GET",
-                    url: '/contents/Createcmt',
-                    contentType: "application/json; charset=utf-8",
-                    data: { "Id": id },
-                    datatype: "json",
-                    success: function (data) {
-                        debugger;
-                        $('#myModalContent').html(data);
-                        $('#myModal').modal(options);
-                        $('#myModal').modal('show');
-                    },
-                    error: function () {
-                        alert("Dynamic content load failed.");
-                    }
-                });
-            });
 
-        });
-    </script>
-    
-    
 </body>
 
 </html>
