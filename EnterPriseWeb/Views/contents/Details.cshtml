@@ -1,0 +1,53 @@
+﻿@model EnterPriseWeb.Models.content
+
+@{
+    ViewBag.Title = "Details";
+    if (Session["accountRole"].ToString() == "ST")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+
+}
+
+<h2>Details</h2>
+@if (Session["accountRole"].ToString() == "ST")
+{
+    @Html.Raw(
+
+            "<div class=\"post\" style='padding: 20px; width: 1000px;'>" + "<ul style='list-style-type: none; background-color: #F1F1F1'>"
+            + "<li>" + Model.account.account_name + "</li>"
+            + "<li>" + Model.content_id + "</li>"
+            + "<li>" + Model.content_title + "</li>"
+            + "<li>"+ Model.content_post + "</li></ul>" + "</div>"
+           + @Html.ActionLink("Edit", "Edit", new { id = Model.content_id }))
+}
+else
+{
+    @Html.Raw(
+
+                "<div class=\"post\" style='padding: 20px; width: 1000px;'>" + "<ul style='list-style-type: none; background-color: #F1F1F1'><li>"
+               + Model.content_post + "</li></ul>" + "</div>"
+               )
+}
+
+
+
+
+@{ Html.RenderAction("ListComment", "contents");}
+
+
+<a href="javascript:void(0);" class="CreComment btn btn-primary" data-id="@Model.content_id" data-toggle="modal" data-target="#myModal">Click to add comment</a>
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent' style="padding: 20px"></div>
+        </div>
+    </div>
+
+</div>
+

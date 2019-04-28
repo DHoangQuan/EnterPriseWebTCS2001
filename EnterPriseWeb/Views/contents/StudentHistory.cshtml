@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EnterPriseWeb.Models.content>
+@{
+    ViewBag.Title = "StudentHistory";
+
+}
+
+<h2>History</h2>
+@if (Model == null)
+{
+    <h1>You have no upload</h1>
+}
+else
+{
+    if (Session["fabc"].ToString() == "2")
+    {
+        foreach (var item in Model)
+        {
+            @Html.Raw("<div class=\"post\" style='padding: 20px; width: 1000px;'>" + "<ul style='list-style-type: none; background-color: #F1F1F1'><li>"
+       + item.content_post + "</li></ul>" + "</div>"
+
+       + @Html.ActionLink("Details", "Details", new { id = item.content_id })
+
+       )
+        }
+    }
+    else
+    {
+        foreach (var item in Model)
+        {
+            @Html.Raw("<div class=\"post\" style='padding: 20px; width: 1000px;'>" + "<ul style='list-style-type: none; background-color: #F1F1F1'><li>"
+       + item.content_post + "</li></ul>" + "</div>"
+
+
+       )
+            <h3>Out of date to update</h3>
+        }
+    }
+
+
+}

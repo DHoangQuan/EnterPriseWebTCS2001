@@ -1,0 +1,35 @@
+﻿@model EnterPriseWeb.Models.closuredate
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>closuredate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Closure_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Closure_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Final_Closure_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Final_Closure_date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Year }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,37 @@
+﻿@model EnterPriseWeb.Models.account
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html class=" -webkit-">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>CodePen - Random Login Form</title>
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <script src="~/scripts/prefixfree.min.js"></script>
+</head>
+<body>
+    @Html.Raw(TempData["msg"])
+    <div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+        @*<div>Site<span>Random</span></div>*@
+        <div>Magazine</div>
+    </div>
+    <br>
+@using (Html.BeginForm())
+{
+    <div class="login">
+
+        @Html.TextBoxFor(model => model.account_id, new { @class = "form-control", @placeholder = "Enter ID" })<br />
+        @Html.TextBoxFor(model => model.password, new { @class = "form-control", @type = "password", @placeholder = "Enter pass" })<br />
+        <button type="submit" value="Login" class="btn btn-primary">LOGIN</button>
+    </div>
+
+    <script src='http://codepen.io/assets/libs/fullpage/jquery.js'></script>
+}
+</body>
+</html>

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<EnterPriseWeb.Models.account>
+
+@{
+    ViewBag.Title = "IndexLocked";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Locked Account</h2>
+
+    <table id="table_id" class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.faculty.faculty_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.role.role_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.account_name)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Dob)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.account_date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.avatar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.active)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.faculty.faculty_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.role.role_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Dob)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.account_date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.avatar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.active)
+                    </td>
+                    <td>
+                       
+                        @if (Session["accountRole"].ToString() == "MC")
+                        {
+                            if (item.role_id == "ST")
+                            {
+                                if (item.falcuty_id == Session["accountFaculty"].ToString())
+                                {
+                                    <a href="@Url.Action("Activate", "accounts", new { id = @item.account_id})" class="btn btn-success" onclick="return confirm('Do you want to unlock this account?')">Unlock</a>
+                                }
+
+                            }
+
+                        }
+                        else if (Session["accountRole"].ToString() == "MM")
+                        {
+                            if (item.role_id != "AD")
+                            {
+                                if (item.role_id != "MM")
+                                {
+                                <a href="@Url.Action("Activate", "accounts", new { id = @item.account_id })" class="btn btn-success" onclick="return confirm('Do you want to unlock this account?')">Unlock</a>
+                                }
+                            }
+
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Activate", "accounts", new { id = @item.account_id})" class="btn btn-success" onclick="return confirm('Do you want to unlock this account?')">Unlock</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+

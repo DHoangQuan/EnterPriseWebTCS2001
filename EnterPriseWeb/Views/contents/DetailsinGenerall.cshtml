@@ -1,0 +1,10 @@
+﻿@model EnterPriseWeb.Models.content
+
+@Html.Raw(
+
+            "<div class=\"post\">" + "<ul style='list-style-type: none;'>"
+            + "<li>" + Model.account.account_name + "</li>"
+            + "<li>" + Model.content_id + "</li>"
+            + "<li>"+Model.content_title+"</li>"
+            +"<li>"+ Model.content_post + "</li></ul>" + "</div>"
+           )

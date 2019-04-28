@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EnterPriseWeb.Models.comment>
+
+@{
+    //ViewBag.Title = "ListComment";
+    Layout = null;
+}
+<div  style="padding: 20px; width: 1000px;">
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+
+
+            if (@item.account.role_id != "ST")
+            {
+                <div style="border-top: solid;">
+                    <p><h4>Mr/Mrs @item.account.account_name </h4><span><h9>@item.comment_date</h9></span></p>
+                </div>
+                <div class="post">
+                    <h7>@item.comment_content </h7>
+                </div>
+            }
+            else
+            {
+                <div style="text-align:right; border-top: solid;">
+                    <p><h4>@item.account.account_name </h4><span><h9>@item.comment_date</h9></span></p>
+                </div>
+                <div class="post" style="text-align:right">
+                    <h7>@item.comment_content </h7>
+                </div>
+            }
+
+
+
+        }
+    }
+    else
+    {
+        <h3>this articles have no comment</h3>
+    }
+</div>

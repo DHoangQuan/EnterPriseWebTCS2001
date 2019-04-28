@@ -1,0 +1,126 @@
+﻿@model EnterPriseWeb.Models.account
+
+@{
+    ViewBag.Title = "Details";
+    if (Session["accountRole"].ToString() =="ST")
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>account</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.avatar)
+        </dt>
+
+        <dd>
+            <img height="150" width="150" src="@Model.avatar" alt="...">
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.account_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.account_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sex)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sex)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.account_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.account_date)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.active)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.faculty.faculty_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.faculty.faculty_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.role.role_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.role.role_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.account_id }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

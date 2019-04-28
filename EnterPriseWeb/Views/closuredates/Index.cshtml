@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EnterPriseWeb.Models.closuredate>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+    <p>
+        
+        <a href="@Url.Action("Create", "closuredates")" class="btn btn-success">Create</a>
+    </p>
+
+<table class="table">
+    <tr>
+        <th>
+            <span>Year Academic</span>
+        </th>
+        <th>
+            <span>Closure date</span>
+        </th>
+        <th>
+            <span>Final closure date</span>
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <h1>@item.Year</h1>
+            </td>
+            <td>
+                <h3>@Html.DisplayFor(modelItem => item.Closure_date)</h3>
+            </td>
+            <td>
+                <h3> @Html.DisplayFor(modelItem => item.Final_Closure_date)</h3>
+            </td>
+            <td>
+                @if (@item.Year != DateTime.Now.Year)
+                {
+                    <h4>You can not change the year in the past.</h4>
+                }
+                else
+                {
+                    
+                    <a href="@Url.Action("Edit", "closuredates", new { id = @item.Year })" class="btn btn-primary">Edit</a>
+
+                }
+                
+            </td>
+        </tr>
+    }
+
+</table>

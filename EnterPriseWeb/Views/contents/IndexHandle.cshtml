@@ -1,0 +1,129 @@
+﻿@model IEnumerable<EnterPriseWeb.Models.content>
+
+@{
+    ViewBag.Title = "IndexHandle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<table id="table_id" class="table">
+    <thead>
+        <tr>
+            <th>
+                <span>ID of content</span>
+            </th>
+            <th>
+                <span>Contributors</span>
+            </th>
+            <th>
+                <span>Faculty</span>
+            <th>
+                <span>Title</span>
+            </th>
+
+
+            <th>
+                <span>Date Post</span>
+            </th>
+            <th>
+                <span>Date is publicted</span>
+            </th>
+            <th>
+                <span>Closure date</span>
+            </th>
+            <th>
+                <span>Final closure Date</span>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.content_id)*@
+                    <strong><h4>@item.content_id</h4>   </strong>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.account.account_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.faculty.faculty_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.content_title)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_post)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_public)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_end)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date_final_end)
+                </td>
+                <td>
+                    @if (item.status == "Processing")
+                    {
+
+                        <label style="color:sandybrown">@item.status</label>
+                    }
+                    else if (item.status == "Public")
+                    {
+
+                        <label style="color:forestgreen">@item.status</label>
+                    }
+                    else if (item.status == "Enable")
+                    {
+
+                        <label style="color:red">@item.status</label>
+                    }
+
+                </td>
+                <td>
+                    @if (item.status == "Processing")
+                    {
+                        <a href="javascript:void(0);" class="Detailpop btn btn-primary" data-id="@item.content_id" data-toggle="modal" data-target="#myModal">Details</a>
+                        <a href = "@Url.Action("Details", "contents", new { id = @item.content_id })" class="btn btn-primary">comments</a>
+                        <a href = "@Url.Action("PublicPost", "contents", new { id = @item.content_id })" class="btn btn-success">Public</a>
+                        <a href = "@Url.Action("EnablePost", "contents", new { id = @item.content_id })" class="btn btn-danger">Enable</a>
+
+                    }
+                    else if (item.status == "Public")
+                    {
+                        <a href="javascript:void(0);" class="Detailpop btn btn-primary" data-id="@item.content_id" data-toggle="modal" data-target="#myModal">Details</a>
+                        <a href = "@Url.Action("Details", "contents", new { id = @item.content_id })" class="btn btn-primary">comments</a>
+                        <a href = "@Url.Action("EnablePost", "contents", new { id = @item.content_id })" class="btn btn-danger">Enable</a>
+
+                    }
+                    else if (item.status == "Enable")
+                    {
+                        <a href="javascript:void(0);" class="Detailpop btn btn-primary" data-id="@item.content_id" data-toggle="modal" data-target="#myModal">Details</a>
+                        <a href="@Url.Action("PublicPost", "contents", new { id = @item.content_id })" class="btn btn-success">Public</a>
+                        @Html.ActionLink("Delete", "Delete", new { id = @item.content_id }, new { onclick = "return confirm('Are you sure, Your data will be damage and delete all')" })
+
+                    }
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div id='myModal' class='modal'>
+    <div class="modal-dialog" style="padding: 20px; width: 1000px;">
+        <div class="modal-content">
+            <div id='myModalContent' style="padding: 20px; width: 900px;"></div>
+        </div>
+    </div>
+
+</div>
