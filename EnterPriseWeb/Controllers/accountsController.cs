@@ -43,10 +43,10 @@ namespace EnterPriseWeb.Controllers
 
         }
 
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
+        public ActionResult Login()
+        {
+            return View();
+        }
         public ActionResult Logout()
         {
             Session["accountName"] = null;
