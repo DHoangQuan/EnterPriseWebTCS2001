@@ -122,5 +122,13 @@
 </div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { id = Model.account_id }) |*@
-    @Html.ActionLink("Back to List", "Index")
+    @if (Session["accountRole"].ToString() == "ST")
+    {
+
+    }
+    else
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+
 </p>
