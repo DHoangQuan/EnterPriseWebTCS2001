@@ -184,46 +184,7 @@ namespace EnterPriseWeb.Controllers
             return View(comment.ToList());
         }
 
-        // GET: Reports
-        //public ActionResult IndexReport(string year)
-        //{
-
-        //    //int y = Convert.ToInt32(year);
-        //    long intYear = Convert.ToInt64(year);
-        //    var faculty = db.faculties;
-        //    var stCont = db.contents.Where(c => c.date_post.Value.Year == intYear);
-        //    List<DataPoint> datapoint = new List<DataPoint>();
-        //    int total = stCont.Count();
-        //    foreach (var idfa in faculty)
-        //    {
-        //        var contCount = 0;
-        //        ArrayList accList = new ArrayList();
-        //        foreach (var contfa in stCont.Where(s => s.faculty.faculty_id == idfa.faculty_id))
-        //        {
-        //            contCount++;
-        //            int i;
-        //            for (i = 0; i < accList.Count && !accList[i].Equals(contfa.account_id); i++) ;
-
-        //            if (i == accList.Count)
-        //            {
-        //                accList.Add(contfa.account_id);
-        //            }
-        //        }
-        //        float percent = (float)contCount / (float)total;
-        //        datapoint.Add(new DataPoint()
-        //        {
-        //            faculty_id = idfa.faculty_id,
-        //            faculty_name = idfa.faculty_name,
-        //            Numberofcontribution = contCount,
-        //            years = year,
-        //            PercentOfIssue = String.Format("{0:P2}", percent),
-        //            NumberOfAccount = accList.Count,
-        //        });
-        //    }
-        //    ViewBag.YearReport = year;
-        //    Session["year"] = year;
-        //    return View(datapoint);
-        //}
+        
         public ActionResult IndexReport(string year)
         {
 

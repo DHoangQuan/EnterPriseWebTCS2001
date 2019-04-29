@@ -190,6 +190,19 @@
 
         });
     </script>
+    <script>
+    $(function () {
+        $("#chkAgr").click(function () {
+            if ($(this).is(":checked")) {
+                $("#dvPost").show();
+                $("#AddPost").hide();
+            } else {
+                $("#dvPost").hide();
+                $("#AddPost").show();
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>

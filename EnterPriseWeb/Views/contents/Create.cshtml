@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>content</h4>
         <hr />
@@ -24,7 +24,7 @@
             </div>
         </div>
 
-        
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.content_post, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -49,15 +49,43 @@
                 @Html.ValidationMessageFor(model => model.faculty_id, "", new { @class = "text-danger" })
             </div>
         </div>
-
-
         <div class="form-group">
+            <ul>
+                I confirm that what I am about to upload is my own work and that it has not, in whole or part, been presented elsewhere for assessment. In addition, I confirm that
+                <li>All material which has been copied has been clearly identified as such by being placed inside quotation marks and a full reference to the source has been provided</li>
+                <li>Any material which has been referred to or adapted has been clearly identified and a full reference to the source has been provided</li>
+                <li>Any work not in quotation marks is in my own words</li>
+                <li>I have not shared my work with any other student</li>
+                <li>I have not taken work from any other student</li>
+                <li>I have not paid anyone to do my work or employed the services of an essay or code writing agency</li>
+                Where material has been used from other sources it has been properly acknowledged in accordance with the University's Regulations regarding Cheating and Plagiarism
+            </ul>
+            <label for="chkAgr">
+                <input type="checkbox" id="chkAgr" />
+                I Agree
+            </label>
+        </div>
+        <div id="AddPost">
+            <h3> You have to agree to upload</h3>
+        </div>
+        <div id="dvPost" style="display: none">
+            
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" onclick="SendEmail()" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
+        @*<div class="form-group" id="createbtn">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
     </div>
 }
+
+
+
+
+
 
 <div>
     @Html.ActionLink("Back to List", "Index")
