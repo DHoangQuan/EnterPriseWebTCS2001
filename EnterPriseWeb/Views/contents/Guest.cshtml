@@ -6,11 +6,11 @@
 @foreach (var item in Model)
 {
     @Html.Raw("<div class=\"post\" style='padding: 20px; width: 1000px;'>" + "<ul style='list-style-type: none; background-color: #F1F1F1'>"
-                       + "<li>" + item.account.account_name + "</li>"
-                       + "<li>" + item.content_id + "</li>"
-                       + "<li>" + item.content_title + "</li>"
+                       + "<li><h3>" + item.account.account_name + "</h3></li>"
+                       + "<li><h3>" + item.content_id + "</h3></li>"
+                       + "<li><h3>" + item.content_title + "</h3></li>"
                        + "<li>" + item.content_post + "</li></ul>" + "</div>"
 
 
        )
-}
+}  
